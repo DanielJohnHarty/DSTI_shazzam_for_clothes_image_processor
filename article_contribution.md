@@ -1,4 +1,4 @@
-A high level model of the workflow of our clothes reccomendation engine can be broken down roughly into the following parts:
+A high level model of the workflow of our clothes recommendation engine can be broken down roughly into the following parts:
 
 - User input interface
 - A microservice which constantly webscrapes new clothes as a background process
@@ -12,8 +12,8 @@ These parts can be mapped together like below:
 
 Team three were responsible to deliver two main objectives:
 
-- generate recommendations
-- create an api to simplify the repetetive, technical tasks for all teams in the pipeline
+- Generate recommendations
+- Create an api to simplify the repetetive, technical tasks for all teams in the pipeline
 
 Let's talk through our path to delivering on each of these two objectives.
 
