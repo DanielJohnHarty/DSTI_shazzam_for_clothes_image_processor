@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-from embedding_toolbox import *
+from fashion_embedding import *
 
 
 

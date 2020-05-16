@@ -9,7 +9,7 @@ import h5py
 from tqdm import tqdm
 
 
-from embedding_toolbox import *
+from fashion_embedding import *
 
 
 
