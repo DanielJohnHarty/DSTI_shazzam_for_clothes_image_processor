@@ -8,7 +8,7 @@ A high level model of the workflow of our clothes reccomendation engine can be b
 
 These parts can be mapped together like below:
 
-![Service workflow](https://github.com/DanielJohnHarty/DSTI_Shazzam_for_clothes_img_processing/blob/master/Documents/imgs/user_shazzam_process.png)
+![Service workflow](https://github.com/DanielJohnHarty/DSTI_shazzam_for_clothes_image_processor/blob/master/Documents/imgs/user_shazzam_process.png)
 
 Team three were responsible to deliver two main objectives:
 
@@ -66,11 +66,11 @@ Here is a brief summary of the steps we followed:
 
 First we used a pre-trained convolutional neural network (CNN) called VGG16 and available on keras. We removed the last 2 dense layers so that this model output 4096 dimensional vector. When we feed an image of cloth into this network we get an embedding of size 4096.
 
-![image  of architechture](https://github.com/DanielJohnHarty/DSTI_Shazzam_for_clothes_img_processing/blob/master/Documents/imgs/archivgg.png)
+![image  of architechture](https://github.com/DanielJohnHarty/DSTI_shazzam_for_clothes_image_processor/blob/master/Documents/imgs/archivgg.png)
 
 To assess the quality of our embedding we use a visualization tool called t-SNE. 
 
-![t-SNE](https://github.com/DanielJohnHarty/DSTI_Shazzam_for_clothes_img_processing/blob/master/Documents/imgs/fashion_tsne.png)
+![t-SNE](https://github.com/DanielJohnHarty/DSTI_shazzam_for_clothes_image_processor/blob/master/Documents/imgs/fashion_tsne.png)
 
 So far our neural network is a general model and is not specialized into discriminating images of clothes. In order to produce better embeddings we fine-tuned our model, that is to say that we trained VGG16 starting from the pretrained version. Actually there are 2 steps:
 - first we removed ouput layer and replace it by a new one adapted to our task a softmax layer of size 11. We froze every layers except the last layer and perform training.
@@ -78,7 +78,7 @@ So far our neural network is a general model and is not specialized into discrim
 
 We used the visualization tool called t-SNE again to reasses the quality of our embedding.
 
-![t-SNE](https://github.com/DanielJohnHarty/DSTI_Shazzam_for_clothes_img_processing/blob/master/Documents/imgs/fashion_tsne_ft11111.png)
+![t-SNE](https://github.com/DanielJohnHarty/DSTI_shazzam_for_clothes_image_processor/blob/master/Documents/imgs/fashion_tsne_ft11111.png)
 
 *Storing images as embeddings*
 
@@ -88,4 +88,4 @@ We use our embedding model over our whole databse of images. We store embeddings
 
 On receiving an image of some item of clothing from a user, we compute its embedding. Here there are several ways to proceed. Either the user provides a specific category of clothes and and we only have to search among clothes of that specific category. Or there is no category provided, in which case we then need to use our fine tuned VGG16 classifer in order to infer the category. We used the Manahattan distance (L1 norm) to measure the distance between two points. It has been shown to perform quite well in "Effects of Distance Measure Choice on KNN Classifier Performance - A Review" for KNN in high dimension. For each candidate point from our stored embeddings database we compute the Manhattan distance to the embedding of user image. It should be noted that this operation can be parallelized to increase the processing speed. Once we get the closest points in the embeddings database, we search for their corresponding image in image database.
 
-![demo results](https://github.com/DanielJohnHarty/DSTI_Shazzam_for_clothes_img_processing/blob/master/Documents/imgs/demo.png)
+![demo results](https://github.com/DanielJohnHarty/DSTI_shazzam_for_clothes_image_processor/blob/master/Documents/imgs/demo.png)
